@@ -7,6 +7,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torchvision import datasets, transforms
 from torch.optim.lr_scheduler import StepLR
+from torchinfo import summary
 
 class Net(nn.Module):
     def __init__(self):
@@ -94,7 +95,7 @@ def main():
 
     model = Net()
     model.load_state_dict(torch.load("mnist_cnn.pt", map_location=device))
-    model.to(device)
+    summary(model, input_size=(args.test_batch_size, 1, 28, 28))
 
     start = time.time()
     test(model, device, test_loader)
