@@ -71,11 +71,12 @@ def main():
 
     if use_cuda:
         device = torch.device("cuda")
+        print(f"{device}: {torch.cuda.get_device_name(0)}")
     elif use_mps:
         device = torch.device("mps")
     else:
         device = torch.device("cpu")
-    print(device)
+        print(f"{device}: # of threads {torch.get_num_threads()}")
 
     test_kwargs = {'batch_size': args.test_batch_size}
     if use_cuda:
@@ -92,7 +93,7 @@ def main():
     test_loader = torch.utils.data.DataLoader(dataset2, **test_kwargs)
 
     model = Net()
-    model.load_state_dict(torch.load("mnist_cnn.pt"))
+    model.load_state_dict(torch.load("mnist_cnn.pt", map_location=device))
     model.to(device)
 
     start = time.time()
