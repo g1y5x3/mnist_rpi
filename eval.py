@@ -97,6 +97,8 @@ def main():
     model.load_state_dict(torch.load("mnist_cnn.pt", map_location=device))
     summary(model, input_size=(args.test_batch_size, 1, 28, 28))
 
+    model = torch.jit.script(model)
+
     start = time.time()
     test(model, device, test_loader)
     end = time.time()
