@@ -140,7 +140,7 @@ def main():
 
     # Save the model
     if args.save_model:
-        torch.save(model.state_dict(), "mnist_cnn.pt")
+        torch.save(model.state_dict(), "models/mnist_cnn.pt")
 
 if __name__ == '__main__':
     main()

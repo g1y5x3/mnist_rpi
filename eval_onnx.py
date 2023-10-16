@@ -14,7 +14,7 @@ def main():
     data, target = npzfile["data"], npzfile["target"]
 
     # Load model
-    session = ort.InferenceSession("mnist_cnn.onnx")
+    session = ort.InferenceSession("models/mnist_cnn.onnx")
 
     # Benchark inference
     start = time.time()
