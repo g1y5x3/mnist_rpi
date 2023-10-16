@@ -8,7 +8,12 @@ def test(model, device, data, target):
     model.eval()
     with torch.no_grad():
         data, target = data.to(device), target.to(device)
+
+        start = time.time()
         output = model(data)
+        end = time.time()
+        print(f"Time: {end - start:.4f} seconds")
+
         pred = output.argmax(dim=1, keepdim=True)  # get the index of the max log-probability
         correct = pred.eq(target.view_as(pred)).sum().item()
 
@@ -29,10 +34,7 @@ def main():
     model.to(device)
     model = torch.jit.script(model)
 
-    start = time.time()
     test(model, device, data, target)
-    end = time.time()
-    print(f"Time: {end - start:.4f} seconds")
 
 if __name__ == '__main__':
     main()

@@ -1,14 +1,18 @@
 import time
-import onnxruntime as ort
+import MNN
 import numpy as np
 
-def test(session, data, target):
+def test(model, data, target):
+    input_var = MNN.expr.placeholder([1000,1,28,28], MNN.expr.NCHW)
+    input_var.write(data)
+
     start = time.time()
-    output = session.run([], {"input": data})[0]
+    output = model.forward([input_var])
     end = time.time()
     print(f"Time: {end - start:.4f} seconds")
 
-    pred = output.argmax(axis=1, keepdims=True)
+    output = output[0]
+    pred = np.argmax(output.read(), axis=1, keepdims=True)
     correct = np.sum(pred.flatten() == target)
     print(f"Accuracy: {correct}/{1000} ({100.*correct/1000:.0f}%)")
 
@@ -18,10 +22,10 @@ def main():
     data, target = npzfile["data"], npzfile["target"]
 
     # Load model
-    session = ort.InferenceSession("models/mnist_cnn.onnx")
+    model = MNN.nn.load_module_from_file("models/mnist_cnn.mnn", ["input"], ["output"])
 
     # Benchark inference
-    test(session, data, target)
+    test(model, data, target)
 
 if __name__ == '__main__':
     main()
