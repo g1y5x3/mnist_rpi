@@ -15,6 +15,13 @@ then run the following command to train the model and save the weights.
 python train.py --save-model 
 ```
 
+To export the **pytorch** model to **ONNX**
+```
+python torch_to_onnx.py
+```
+Here is a graph generated with [netron](https://netron.app/) from `mnist_cnn.onnx`
+![model_graph](figures/mnist_cnn.onnx.png)
+
 ## Inference
 
 ### Pytorch (1.13.0)
@@ -25,9 +32,3 @@ python eval_torch.py
 ```
 
 ### ONNX
-To export the **pytorch** model to **ONNX**
-```
-python torch_to_onnx.py
-```
-Here is a graph generated with [netron](https://netron.app/) from `mnist_cnn.onnx`
-![model_graph](figures/mnist_cnn.onnx.png)

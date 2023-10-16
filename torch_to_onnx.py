@@ -13,7 +13,7 @@ def main():
     summary(model)
 
     # Export the model as ONNX
-    torch_input = torch.randn(1,1,28,28)
+    torch_input = torch.randn(1000,1,28,28)
     torch.onnx.export(model, torch_input, "mnist_cnn.onnx", export_params=True, input_names=["input"], output_names=["output"])
     print("exported model to mnist_cnn.onnx")
 
