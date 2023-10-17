@@ -84,7 +84,7 @@ Time: 2.1080 seconds
 Accuracy: 988/1000 (99%)
 ```
 
-_To using its C++ API is still a work in progress..._
+_To use its C++ API is still a work in progress..._
 
 ## TO-DO
 - [x] torch
