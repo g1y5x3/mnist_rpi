@@ -6,7 +6,6 @@
 // #include <MNN/expr/Executor.hpp>
 
 // using namespace MNN;
-// using namespace MNN::Express;
 
 int main(int argc, const char* argv[]) {
     // if (argc < 3) {
@@ -28,7 +27,7 @@ int main(int argc, const char* argv[]) {
     MNN::ScheduleConfig sConfig;
     sConfig.type = MNN_FORWARD_CPU;
     sConfig.numThread = 4;
-    // TODO: specify backend
+    // TODO: specify backend to understand the workflow better
     auto session = model->createSession(sConfig);
 
     // const std::string model_file = "models/mnist_cnn.mnn";  // model file with path
