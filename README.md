@@ -84,9 +84,10 @@ Time: 2.1080 seconds
 Accuracy: 988/1000 (99%)
 ```
 
-_To use its C++ API is still a work in progress..._
+_To use its C++ API is still a work in progress and its likely to be faster..._
 
 ## TO-DO
+If I can bare the pain of installing those packages, I would like to continue the benchmarks for this CNN model on all of the following platform.
 - [x] torch
 - [x] onnx
 - [x] MNN (Python)
