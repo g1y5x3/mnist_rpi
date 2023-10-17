@@ -38,6 +38,11 @@ Here is a computation graph of the model generated with [netron](https://netron.
 
 ## Inference
 A subset of 1000 test images are used to benchmark the performance between different deep learning frameworks.
+| framework | time (s) |
+| --------- | -------- |
+| torch | 2.4196 |
+| ONNX | 1.4245 |
+| MNN | 2.1080 |
 
 ### Pytorch (1.13.0)
 Unfortunately as of now, to install Pytorch on Raspberry Pi OS is a bit tedious. Here is the summary of my experience. 
